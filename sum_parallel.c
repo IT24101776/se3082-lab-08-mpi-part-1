@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv) {
     int rank, size;
-    long long N = 1000000000; // 10 million
+    long long N = 10000000; // 10 million
     
     MPI_Init(&argc, &argv);
     double start_time, end_time;

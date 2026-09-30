@@ -5,7 +5,7 @@
 
 int main(int argc, char** argv) {
     int rank, size;
-    long long total_iterations = 200000000;
+    long long total_iterations = 10000000;
     long long local_iterations;
     long long local_count = 0;
     long long global_count = 0;
@@ -27,7 +27,6 @@ int main(int argc, char** argv) {
     }
 
     // Seed the random number generator. 
-    // It is important that each process gets a DIFFERENT seed!
     unsigned int seed = time(NULL) + rank * 12345;
     srand(seed);
 
@@ -50,7 +49,7 @@ int main(int argc, char** argv) {
 
     if (rank == 0) {
         // Estimate Pi: Area_circle / Area_square = (Pi * r^2) / (2r)^2 = Pi / 4
-        // Thus, Pi = 4 * (Points_inside / Total_points)
+        // Pi = 4 * (Points_inside / Total_points)
         pi_estimate = 4.0 * (double)global_count / (double)total_iterations;
         
         printf("----------------------------------------------------\n");
